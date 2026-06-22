@@ -31,13 +31,13 @@ def emo_detector():
     # Check if the dominant_emotion is None, indicating an error or invalid input
     if dominant_emotion is None:
         return "Invalid text! Please try again!"
-    else:
-        # Return a formatted string with the emotion scores and dominant emotion
-        return (
-            f"For the given statement, the system response is 'anger': {anger_score}, "
-            f"'disgust': {disgust_score}, 'fear': {fear_score}, 'joy': {joy_score} and "
-            f"'sadness': {sadness_score}. The dominant emotion is {dominant_emotion}."
-        )
+
+    # Return a formatted string with the emotion scores and dominant emotion
+    return (
+        f"For the given statement, the system response is 'anger': {anger_score}, "
+        f"'disgust': {disgust_score}, 'fear': {fear_score}, 'joy': {joy_score} and "
+        f"'sadness': {sadness_score}. The dominant emotion is {dominant_emotion}."
+    )
 
 
 @app.route("/")
