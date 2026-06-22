@@ -11,7 +11,8 @@ app = Flask("Emotion Detector")
 @app.route("/emotionDetector")
 def emo_detector():
     """
-    This function analyzes the text provided in the request arguments and returns the emotion scores and dominant emotion.
+    This function analyzes the text provided in the request arguments
+    and returns the emotion scores and dominant emotion.
     """
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get("textToAnalyze")
@@ -32,7 +33,11 @@ def emo_detector():
         return "Invalid text! Please try again!"
     else:
         # Return a formatted string with the emotion scores and dominant emotion
-        return f"For the given statement, the system response is 'anger': {anger_score}, 'disgust': {disgust_score}, 'fear': {fear_score}, 'joy': {joy_score} and 'sadness': {sadness_score}. The dominant emotion is {dominant_emotion}."
+        return (
+            f"For the given statement, the system response is 'anger': {anger_score}, "
+            f"'disgust': {disgust_score}, 'fear': {fear_score}, 'joy': {joy_score} and "
+            f"'sadness': {sadness_score}. The dominant emotion is {dominant_emotion}."
+        )
 
 
 @app.route("/")
