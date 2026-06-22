@@ -1,7 +1,22 @@
-import json, requests
+"""
+This module uses the Watson Tone Analyzer API to detect the emotions in a given text.
+
+"""
+
+import json
+import requests
 
 
 def emotion_detector(text_to_analyze):
+    """
+    Analyzes the emotions in a given text using the Watson Tone Analyzer API.
+
+    Args:
+        text_to_analyze (str): The text to analyze.
+
+    Returns:
+        dict: A dictionary containing the emotion scores and dominant emotion.
+    """
     # Define the URL for the sentiment analysis API
     URL = "https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict"
 
@@ -34,7 +49,18 @@ def emotion_detector(text_to_analyze):
             "sadness": sadness_score,
             "dominant_emotion": dominant_emotion,
         }
-    # If the response status code is 500 or any other unexpected status codes
+
+    elif response.status_code == 500:
+        # If the response status code is 500, return None for all emotions
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None,
+        }
+    # if the response status code is any other unexpected status codes
     else:
         return {
             "anger": None,
